@@ -3,7 +3,6 @@
 import { createBoard } from "@/actions/create-board";
 import { FormSubmit } from "@/components/form/form-button";
 import { FormInput } from "@/components/form/form-input";
-import { Button } from "@/components/ui/button";
 import { useAction } from "@/hooks/use-action";
 
 export default function Form() {
