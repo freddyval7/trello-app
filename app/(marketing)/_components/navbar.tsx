@@ -12,7 +12,7 @@ export function Navbar() {
             <Link href="/sign-in">Login</Link>
           </Button>
           <Button size={"sm"}>
-            <Link href="/sign-up">Get Taskify for Free</Link>
+            <Link href="/sign-up">Get Utask for Free</Link>
           </Button>
         </div>
       </div>

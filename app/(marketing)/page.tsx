@@ -29,7 +29,7 @@ export default function MarketingPage() {
           No 1 task managment app
         </div>
         <h1 className="text-3xl md:text-6xl text-center text-neutral-800 mb-6">
-          Taskify helps team move
+          Utask helps team move
         </h1>
         <div className="w-fit text-3xl md:text-6xl text-center bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white px-4 p-2 rounded-md">
           work forward
@@ -43,10 +43,10 @@ export default function MarketingPage() {
       >
         Collaborate, manage projects, and reach new productivity peaks. From
         high rises to the home office, the way your team works is unique -
-        accomplish it all with Taskify.
+        accomplish it all with Utask.
       </div>
       <Button className="mt-8" asChild size="lg">
-        <Link href="/sign-up">Get Taskify for free</Link>
+        <Link href="/sign-up">Get Utask for free</Link>
       </Button>
     </div>
   );
