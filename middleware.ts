@@ -24,6 +24,7 @@ export default authMiddleware({
       return NextResponse.redirect("/select-org");
     }
   },
+  debug: true,
 });
 
 export const config = {
