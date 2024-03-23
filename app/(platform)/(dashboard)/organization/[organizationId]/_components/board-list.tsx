@@ -1,11 +1,16 @@
-import { FormPopover } from "@/components/form/form-popover";
-import { Hint } from "@/components/hint";
-import { HelpCircle, User2 } from "lucide-react";
-import { db } from "@/lib/db";
-import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 import Link from "next/link";
+
+import { HelpCircle, User2 } from "lucide-react";
+import { FormPopover } from "@/components/form/form-popover";
+import { Hint } from "@/components/hint";
+import { db } from "@/lib/db";
+import { auth } from "@clerk/nextjs";
 import { Skeleton } from "@/components/ui/skeleton";
+
+import { MAX_FREE_BOARDS } from "@/constants/board";
+import { getAvailableCount } from "@/lib/org-limit";
+import { checkSubscription } from "@/lib/subscription";
 
 export default async function BoardList() {
   const { orgId } = auth();
@@ -22,6 +27,11 @@ export default async function BoardList() {
       createdAt: "desc",
     },
   });
+
+  const availableCount = await getAvailableCount();
+
+  const isPro = await checkSubscription()
+
   return (
     <div className="space-y-4">
       <div className="flex items-center font-semibold text-lg text-neutral-600">
@@ -49,7 +59,9 @@ export default async function BoardList() {
             className="aspect-video hover:opacity-75 transition relative h-full w-full bg-muted rounded-sm flex flex-col gap-y-1 items-center justify-center"
           >
             <p className="text-sm">Create new board</p>
-            <span className="text-xs">5 remaining</span>
+            <span className="text-xs">
+              {isPro ? "Unlimited" : `${MAX_FREE_BOARDS - availableCount} remaining`}
+            </span>
             <Hint
               description={`Free Workspaces can have up to 5 open boards. For unlimited boards upgrade this workspace.`}
               sideOffset={40}
